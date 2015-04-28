@@ -10,17 +10,27 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * 邮件服务实现类.
+ */
 @Service
 public class EmailServiceImpl implements EmailService {
 
+    /**
+     * 邮件发送的Sender.
+     */
     @Resource
     private JavaMailSender mailSender;
 
+    /**
+     * 系统的email.
+     */
     @Value("${email.systemEmail}")
     private String systemEmail;
 
     @Override
-    public void sendEmail(String emailAddr, String title, String content) throws EmailException {
+    public final void sendEmail(final String emailAddr, final String title,
+                                final String content) throws EmailException {
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
