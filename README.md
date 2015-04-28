@@ -1,0 +1,1 @@
+Just some Maven example in book "Maven in Action"
