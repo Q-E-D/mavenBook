@@ -44,7 +44,7 @@ public class EmailServiceTest {
     }
 
     @Test
-    public void testSendMail() throws MessagingException, IOException {
+    public void testSendMail() throws MessagingException, IOException, EmailException {
 
         service.sendEmail("vfixviii@mavenbook.com", title, content);
 
@@ -57,7 +57,7 @@ public class EmailServiceTest {
     }
 
     @Test(expected = EmailException.class)
-    public void testSendMailException() {
+    public void testSendMailException() throws EmailException {
         service.sendEmail("none@mavenbook.com", null, content);
     }
 
