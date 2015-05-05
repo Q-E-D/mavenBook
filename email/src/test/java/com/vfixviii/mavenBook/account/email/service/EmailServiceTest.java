@@ -1,10 +1,9 @@
-package com.vfixviii.mavenBook.account;
+package com.vfixviii.mavenBook.account.email.service;
 
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.GreenMailUtil;
 import com.icegreen.greenmail.util.ServerSetup;
 import com.vfixviii.mavenBook.account.email.exception.EmailException;
-import com.vfixviii.mavenBook.account.email.service.EmailService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
