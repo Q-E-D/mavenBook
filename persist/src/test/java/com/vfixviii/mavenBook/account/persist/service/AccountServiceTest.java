@@ -31,14 +31,41 @@ public class AccountServiceTest {
         account.setEmail("test@vfix.com");
         account.setPassword("123456");
         account.setActivited(true);
+
+        service.save(account);
     }
 
     @Test
-    public void testCURD() {
-        Assert.assertNull(account.getId());
-        service.save(account);
-
+    public void testFinaAll() {
         List<Account> list = service.findAll();
         Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test
+    public void testGet() {
+        Account ac = service.get(0);
+        Assert.assertEquals(ac.getName(), account.getName());
+        Assert.assertEquals(ac.getEmail(), account.getEmail());
+        Assert.assertEquals(ac.getPassword(), account.getPassword());
+        Assert.assertEquals(ac.getActivited(), account.getActivited());
+        Assert.assertEquals(ac.getId(), Integer.valueOf(0));
+    }
+
+    @Test
+    public void testUpdate() {
+        Account ac = service.get(0);
+        ac.setName("newName");
+        service.update(ac);
+
+        ac = service.get(0);
+        Assert.assertEquals(ac.getName(), "newName");
+    }
+
+    @Test
+    public void testDelete() {
+        service.delete(0);
+
+        List<Account> list = service.findAll();
+        Assert.assertEquals(list.size(), 0);
     }
 }
