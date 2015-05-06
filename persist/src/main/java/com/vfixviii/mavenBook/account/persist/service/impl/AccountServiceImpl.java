@@ -31,14 +31,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void update(Account account) {
-        String sql = "UPDATE Account VALUES(?, ?, ?, ?, ?) WHERE id = ?";
+        String sql = "UPDATE Account SET name = ?, email = ?, password = ?, activited = ? WHERE id = ?";
         jdbcTemplate.update(sql, account.getName(), account.getEmail(), account.getPassword(), account.getActivited(), account.getId());
     }
 
     @Override
     public Account get(Integer id) {
         String sql = "SELECT * FROM Account WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, Account.class);
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Account>(Account.class));
     }
 
     @Override

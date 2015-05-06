@@ -1,6 +1,7 @@
 package com.vfixviii.mavenBook.account.persist.service;
 
 import com.vfixviii.mavenBook.account.persist.entities.Account;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -21,10 +25,15 @@ public class AccountServiceTest {
     @Resource
     private AccountService service;
 
+    @Resource
+    private DataSource dataSource;
+
     private Account account;
 
+    private Connection conn;
+
     @Before
-    public void setup() {
+    public void setup() throws SQLException {
         account = new Account();
 
         account.setName("test");
@@ -33,6 +42,8 @@ public class AccountServiceTest {
         account.setActivited(true);
 
         service.save(account);
+
+        conn = dataSource.getConnection();
     }
 
     @Test
@@ -67,5 +78,10 @@ public class AccountServiceTest {
 
         List<Account> list = service.findAll();
         Assert.assertEquals(list.size(), 0);
+    }
+
+    @After
+    public void reset() throws SQLException {
+        conn.createStatement().execute("TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK");
     }
 }
