@@ -16,6 +16,7 @@
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
         <junit.version>4.11</junit.version>
+        <source.plugin.version>2.1.1</source.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -53,4 +54,24 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${source.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-source</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
