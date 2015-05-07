@@ -11,6 +11,7 @@
     <modules>
         <module>email</module>
         <module>persist</module>
+        <module>captcha</module>
     </modules>
 
     <properties>
