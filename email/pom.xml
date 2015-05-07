@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>account-email</artifactId>
-    <name>Accout-email</name>
+    <name>accout-email</name>
     <packaging>jar</packaging>
 
     <properties>
