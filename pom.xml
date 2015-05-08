@@ -18,6 +18,7 @@
         <spring.version>4.1.6.RELEASE</spring.version>
         <junit.version>4.11</junit.version>
         <source.plugin.version>2.1.1</source.plugin.version>
+        <cobertura.version>2.7</cobertura.version>
     </properties>
 
     <dependencyManagement>
@@ -71,6 +72,19 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>${cobertura.version}</version>
+                    <configuration>
+                        <check/>
+                        <formats>
+                            <format>html</format>
+                            <format>xml</format>
+                        </formats>
+                        <aggregate>true</aggregate>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -70,6 +70,5 @@ public class AccountCaptchaServiceTest {
     @After
     public void reset() {
         service.reset();
-        System.out.println("--");
     }
 }
