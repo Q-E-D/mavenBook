@@ -15,7 +15,7 @@ public interface AccountCaptchaService {
 
     boolean valiateCaptcha(String key, String value) throws AccountCaptchaException;
 
-    List<String> getPreDefinedTexts();
-
     void setPreDefinedTexts(List<String> preDefinedTexts);
+
+    void reset();
 }

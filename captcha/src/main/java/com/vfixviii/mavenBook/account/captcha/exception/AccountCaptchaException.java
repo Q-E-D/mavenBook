@@ -5,4 +5,7 @@ package com.vfixviii.mavenBook.account.captcha.exception;
  */
 public class AccountCaptchaException extends Exception {
 
+    public AccountCaptchaException(String s) {
+        super(s);
+    }
 }

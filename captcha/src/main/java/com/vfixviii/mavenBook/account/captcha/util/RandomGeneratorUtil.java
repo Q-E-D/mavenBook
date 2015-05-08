@@ -12,11 +12,11 @@ public class RandomGeneratorUtil {
     public static synchronized String getRandomString(int count) {
 
         StringBuilder sb = new StringBuilder(count);
-        Random random = new Random(System.currentTimeMillis());
+        Random random = new Random();
 
         for (int i = 0; i < count; ++i) {
             sb.append(range.charAt(random.nextInt(range.length())));
         }
-        return null;
+        return sb.toString();
     }
 }
