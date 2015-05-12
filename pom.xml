@@ -12,6 +12,7 @@
         <module>email</module>
         <module>persist</module>
         <module>captcha</module>
+        <module>service</module>
     </modules>
 
     <properties>
