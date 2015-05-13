@@ -15,6 +15,16 @@ public class Account {
 
     private Boolean activited;
 
+    public Account() {
+    }
+
+    public Account(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.activited = false;
+    }
+
     public Integer getId() {
         return id;
     }
