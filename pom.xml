@@ -13,6 +13,7 @@
         <module>persist</module>
         <module>captcha</module>
         <module>service</module>
+        <module>web</module>
     </modules>
 
     <properties>
