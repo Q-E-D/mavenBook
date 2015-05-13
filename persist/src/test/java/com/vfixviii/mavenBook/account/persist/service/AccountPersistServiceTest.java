@@ -20,10 +20,10 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:*.xml")
-public class AccountServiceTest {
+public class AccountPersistServiceTest {
 
     @Resource
-    private AccountService service;
+    private AccountPersistService service;
 
     @Resource
     private DataSource dataSource;

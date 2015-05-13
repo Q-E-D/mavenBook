@@ -3,7 +3,7 @@ package com.vfixviii.mavenBook.account.email.service;
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.GreenMailUtil;
 import com.icegreen.greenmail.util.ServerSetup;
-import com.vfixviii.mavenBook.account.email.exception.EmailException;
+import com.vfixviii.mavenBook.account.email.exception.AccountEmailException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +20,12 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:*.xml")
-public class EmailServiceTest {
+public class AccountEmailServiceTest {
 
     private GreenMail greenMail;
 
     @Resource
-    private EmailService service;
+    private AccountEmailService service;
 
     private String title;
 
@@ -43,7 +43,7 @@ public class EmailServiceTest {
     }
 
     @Test
-    public void testSendMail() throws MessagingException, IOException, EmailException {
+    public void testSendMail() throws MessagingException, IOException, AccountEmailException {
 
         service.sendEmail("vfixviii@mavenbook.com", title, content);
 
@@ -55,8 +55,8 @@ public class EmailServiceTest {
         assertEquals(content, GreenMailUtil.getBody(msgs[0]).trim());
     }
 
-    @Test(expected = EmailException.class)
-    public void testSendMailException() throws EmailException {
+    @Test(expected = AccountEmailException.class)
+    public void testSendMailException() throws AccountEmailException {
         service.sendEmail("none@mavenbook.com", null, content);
     }
 

@@ -7,13 +7,15 @@ import java.util.List;
 /**
  * 用户持久化服务器类.
  */
-public interface AccountService {
+public interface AccountPersistService {
 
     void save(Account account);
 
     void update(Account account);
 
     Account get(Integer id);
+
+    Account getByName(String name);
 
     void delete(Integer id);
 

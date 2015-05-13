@@ -1,7 +1,7 @@
 package com.vfixviii.mavenBook.account.email.service.impl;
 
-import com.vfixviii.mavenBook.account.email.exception.EmailException;
-import com.vfixviii.mavenBook.account.email.service.EmailService;
+import com.vfixviii.mavenBook.account.email.exception.AccountEmailException;
+import com.vfixviii.mavenBook.account.email.service.AccountEmailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
  * 邮件服务实现类.
  */
 @Service
-public class EmailServiceImpl implements EmailService {
+public class AccountEmailServiceImpl implements AccountEmailService {
 
     /**
      * 邮件发送的Sender.
@@ -30,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public final void sendEmail(final String emailAddr, final String title,
-                                final String content) throws EmailException {
+                                final String content) throws AccountEmailException {
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -41,7 +41,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setSubject(title);
             helper.setText(content, true);
         } catch (Exception e) {
-            throw new EmailException("邮件发送失败！");
+            throw new AccountEmailException("邮件发送失败！");
         }
 
         mailSender.send(message);

@@ -1,7 +1,7 @@
 package com.vfixviii.mavenBook.account.persist.service.impl;
 
 import com.vfixviii.mavenBook.account.persist.entities.Account;
-import com.vfixviii.mavenBook.account.persist.service.AccountService;
+import com.vfixviii.mavenBook.account.persist.service.AccountPersistService;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
  * 用户持久化服务实现类.
  */
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountPersistServiceImpl implements AccountPersistService {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -39,6 +39,12 @@ public class AccountServiceImpl implements AccountService {
     public Account get(Integer id) {
         String sql = "SELECT * FROM Account WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Account>(Account.class));
+    }
+
+    @Override
+    public Account getByName(String name) {
+        String sql = "SELECT * FROM Account WHERE name = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<Account>(Account.class));
     }
 
     @Override
