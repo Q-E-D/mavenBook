@@ -80,6 +80,13 @@ public class AccountPersistServiceTest {
         Assert.assertEquals(list.size(), 0);
     }
 
+    @Test
+    public void testGetByName() {
+        Account ac = service.getByName("test");
+        Assert.assertNotNull(ac);
+        Assert.assertTrue(ac.getName().equals(account.getName()));
+    }
+
     @After
     public void reset() throws SQLException {
         conn.createStatement().execute("TRUNCATE SCHEMA PUBLIC RESTART IDENTITY AND COMMIT NO CHECK");
