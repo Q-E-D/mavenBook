@@ -58,7 +58,7 @@ public class AccountServiceImpl implements AccountService {
         String uuid = UUID.randomUUID().toString();
         activityMap.put(dto.getName(), uuid);
         try {
-            emailService.sendEmail(dto.getName(), "激活", "http://nixi.im/activity/" + uuid);
+            emailService.sendEmail(dto.getEmail(), "激活", "http://localhost:8080/activity/" + dto.getName() + "/" + uuid);
         } catch (AccountEmailException e) {
             throw new AccountServiceException(e.getLocalizedMessage());
         }
